@@ -1,0 +1,44 @@
+<mat-card>Edit Book</mat-card>
+
+<div class="edit-book-form">
+    <a [routerLink]="['/books']">Back</a>
+    <form #values="ngForm" (submit)="submitEdit()">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Book Title" [(ngModel)]="editBook.title" name="title">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Book Author" [(ngModel)]="editBook.author" name="author">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Book Price" type="number" [(ngModel)]="editBook.price" name="price">
+      </mat-form-field>
+      
+      <mat-form-field class="full-width" >
+          <input matInput [(ngModel)]="editBook.dateadded" [matDatepicker]="da" placeholder="Date Added " [ngModelOptions]="{standalone: true}">
+          <mat-datepicker-toggle matSuffix [for]="da"></mat-datepicker-toggle>
+        </mat-form-field>
+      <mat-datepicker #da ></mat-datepicker>
+      <mat-form-field class="full-width" >
+          <input matInput [(ngModel)]="editBook.dateread" [matDatepicker]="dr" placeholder="Date Read " [ngModelOptions]="{standalone: true}">
+          <mat-datepicker-toggle matSuffix [for]="dr"></mat-datepicker-toggle>
+        </mat-form-field>
+      <mat-datepicker #dr ></mat-datepicker>
+
+      
+      <mat-form-field class="full-width">
+          <textarea matInput rows="5" placeholder="Book Description" [(ngModel)]="editBook.description" name="description" ></textarea>
+        </mat-form-field>
+    
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Book Rate (1-5)" min="1" max="5" step="0.1" type="number" [(ngModel)]="editBook.rate" name="rate">
+      </mat-form-field>    
+     
+
+      <mat-form-field class="third-width">
+          <input matInput placeholder="Image Url (enter image URL)" [(ngModel)]="editBook.imageUrl" name="imageUrl">
+      </mat-form-field>
+      <img src="{{editBook.imageUrl}}" alt="{{editBook.title}}">
+      <hr>
+      <button mat-raised-button value="submit"> Save Changes </button>
+    </form>
+</div>
